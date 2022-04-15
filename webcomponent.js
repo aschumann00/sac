@@ -43,7 +43,7 @@
 				var workbook = new Excel.Workbook(); 
 				workbook.xlsx.readFile('https://aschumann00.github.io/sac/data_file.xlsx')
 					.then(function() {
-						var worksheet = workbook.getWorksheet(sheet);
+						var worksheet = workbook.getWorksheet('Tabelle1');
 						worksheet.eachRow({ includeEmpty: true }, function(row, rowNumber) {
 						  console.log("Row " + rowNumber + " = " + JSON.stringify(row.values));
 						});
