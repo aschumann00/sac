@@ -33,7 +33,7 @@
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
 		onCustomWidgetAfterUpdate(oChangedProperties) {
             if (this._firstConnection){
-				document.getElementById('headline').innerHTML = "test headline" //oChangedProperties["value"];				
+				document.getElementById('headline').innerHTML = "test headline"; //oChangedProperties["value"];				
                 this.redraw();
             }
         }
