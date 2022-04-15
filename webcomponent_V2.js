@@ -1,9 +1,8 @@
  (function()  {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = `
-    `;
+    tmpl.innerHTML = ``;
 
-    customElements.define('com-sap-sample-helloworld5', class HelloWorld extends HTMLElement {
+    customElements.define('com-sap-sample-excelupload', class ExcelUpload extends HTMLElement {
 
 
 		constructor() {
@@ -13,7 +12,7 @@
             this._firstConnection = false;
             this._tagContainer;
             this._tagType = "h1";
-            this._tagText = "Hello World";
+            this._tagText = "Excel Upload";
 
             //Adding event handler for click events
 			this.addEventListener("click", event => {
