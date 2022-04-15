@@ -1,10 +1,10 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-        <h1>SAC Custom Widget</h1>
+        <h1>Hello World</h1>
     `;
-
-    customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
+	
+    customElements.define('com-sap-sample-excelupload', class ExcelUpload extends HTMLElement {
 
 
 		constructor() {
@@ -17,7 +17,7 @@
         //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
             this._firstConnection = true;
-            this.redraw();
+            this.redraw(); 
         }
 
          //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
@@ -26,32 +26,57 @@
         }
 
          //When the custom widget is updated, the Custom Widget SDK framework executes this function first
-		onCustomWidgetBeforeUpdate(oChangedProperties) {
+		onCustomWidgetBeforeUpdate(changedProperties) {
 
 		}
 
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
-		onCustomWidgetAfterUpdate(oChangedProperties) {
+		onCustomWidgetAfterUpdate(changedProperties) {
             if (this._firstConnection){
+				document.getElementById('headline').innerHTML = changedProperties["value"];
                 this.redraw();
             }
         }
         
         //When the custom widget is removed from the canvas or the analytic application is closed
         onCustomWidgetDestroy(){
+        
         }
 
         
         //When the custom widget is resized on the canvas, the Custom Widget SDK framework executes the following JavaScript function call on the custom widget
-        // Commented out by default.  If it is enabled, SAP Analytics Cloud will track DOM size changes and call this callback as needed
-        //  If you don't need to react to resizes, you can save CPU by leaving it uncommented.
+        // Commented out by default
         /*
         onCustomWidgetResize(width, height){
-            redraw()
+        
         }
         */
 
-        redraw(){
+        //Getters and Setters
+        get widgetText() {
+            return this._tagType;
         }
+
+        set widgetText(value) {
+            this._tagText = value;
+        }
+
+
+        get headingType() {
+            return this._tagType;
+            }
+
+        set headingType(value) {
+            this._tagType = value;
+        }
+
+        // End - Getters and Setters
+
+        redraw(){
+
+        }
+    
+    
     });
+        
 })();
