@@ -41,7 +41,7 @@
 		onCustomWidgetAfterUpdate(oChangedProperties) {
             if (this._firstConnection){
 
-				let inputFile =	document.createElement("input");
+/* 				let inputFile =	document.createElement("input");
 				inputFile.setAttribute("id","readLocalFile");
 				inputFile.setAttribute("type","file");
 				inputFile.setAttribute("accept","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel");
@@ -66,11 +66,11 @@
 							if(typeof(callback) == "function") callback(json);   //Callback 
 							 document.getElementById('readLocalFile').value = null; //Clear after reading
 						};
-					});
+					}); */
 
 
-				console.log(sheetNames);
-				alert("I am an alert box!");
+				console.log(oChangedProperties['value']);
+				alert("Alert");
                 this.redraw();
             }
         }
