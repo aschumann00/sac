@@ -42,7 +42,11 @@
             if (this._firstConnection){
 
 				let inputFile =	document.createElement("input");
-
+				inputFile.setAttribute("id","readLocalFile");
+				inputFile.setAttribute("type","file");
+				inputFile.setAttribute("accept","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel");
+				inputFile.setAttribute("multiple", false);  //Multiple choices are allowed. Set to no here
+				inputFile.click();
 
 				console.log(inputFile);
 				alert("I am an alert box!");
