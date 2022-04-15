@@ -33,7 +33,7 @@
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
 		onCustomWidgetAfterUpdate(oChangedProperties) {
             if (this._firstConnection){
-				document.write('TEST TEXT');
+				document.getElementById("headline").innerHTML = "New text!";
                 this.redraw();
             }
         }
