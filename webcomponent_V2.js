@@ -1,32 +1,4 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@aschumann00 
-davidhstocker
-/
-SAC_CustomWidget_HelloWorld_5
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-SAC_CustomWidget_HelloWorld_5/webcomponent.js /
-@davidhstocker
-davidhstocker Update webcomponent.js
-Latest commit e7ca4ca on 6 Feb 2020
- History
- 1 contributor
-98 lines (71 sloc)  2.72 KB
-   
-(function()  {
+ (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
     `;
@@ -124,16 +96,3 @@ Latest commit e7ca4ca on 6 Feb 2020
     });
         
 })();
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
