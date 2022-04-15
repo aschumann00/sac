@@ -1,7 +1,9 @@
- (function()  {
+(function()  {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = `<h1 id="headline">Upload</h1>`;
-
+    tmpl.innerHTML = `
+        <h1>Hello World</h1>
+    `;
+	
     customElements.define('com-sap-sample-excelupload', class ExcelUpload extends HTMLElement {
 
 
