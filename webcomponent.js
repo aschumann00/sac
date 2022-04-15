@@ -1,7 +1,7 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-        <h1>SAC Custom Widget</h1>
+        <h1>Hello World</h1>
     `;
 
     customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
@@ -33,6 +33,7 @@
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
 		onCustomWidgetAfterUpdate(oChangedProperties) {
             if (this._firstConnection){
+				document.getElementById('headline').innerHTML = changedProperties["value"];				
                 this.redraw();
             }
         }
