@@ -48,19 +48,27 @@
 				inputFile.setAttribute("multiple", false);  //Multiple choices are allowed. Set to no here
 				inputFile.click();
 				
-				let  files = e.target.files;
-				if(files.length == 0) return;
-				let  file = files[0];
-				let  reader = new FileReader();
-				reader.readAsBinaryString(file);
-				reader.onload = function(e) {   //Handle the load event. Triggered when the read operation completes.
-					let  data = e.target.result;
-					let  workbook = XLSX.read(data, {type: 'binary'}); //XLSX: / xlsx.core.min.js read excel through XLSX.read(data, {type: type}) method
-					console.log(workbook ); 
-					let  sheetNames = workbook.SheetNames; // Sheet name collection
-					let  worksheet = workbook.Sheets[sheetNames[0]]; // Here we only read the first sheet 
-					let  json = XLSX.utils.sheet_to_json(worksheet); //  Read the workbook, you can write your own methods to output the table. Here it is recommended to use XLSX.utils. Tool class to output the data. Here you can output the data in json format and other format codes		
-				}
+				document.body.appendChild(inputFile);
+					console.log("Use ID by readLocalFile Of input dom Object to get the contents of the uploaded file json Format data return");
+					document.getElementById('readLocalFile').addEventListener('change', function(e) {   //Execute after selecting file
+						let  files = e.target.files;
+						if(files.length == 0) return;
+						let  file = files[0];
+						let  reader = new FileReader();
+						reader.readAsBinaryString(file);
+						reader.onload = function(e) {   //Handle the load event. Triggered when the read operation completes.
+							let  data = e.target.result;
+							let  workbook = XLSX.read(data, {type: 'binary'}); //XLSX: / xlsx.core.min.js read excel through XLSX.read(data, {type: type}) method
+							console.log(workbook ); 
+							let  sheetNames = workbook.SheetNames; // Sheet name collection
+							let  worksheet = workbook.Sheets[sheetNames[0]]; // Here we only read the first sheet 
+							let  json = XLSX.utils.sheet_to_json(worksheet); //  Read the workbook, you can write your own methods to output the table. Here it is recommended to use XLSX.utils. Tool class to output the data. Here you can output the data in json format and other format codes
+							if(typeof(callback) == "function") callback(json);   //Callback 
+							 document.getElementById('readLocalFile').value = null; //Clear after reading
+						};
+					});
+
+
 				console.log(sheetNames);
 				alert("I am an alert box!");
                 this.redraw();
