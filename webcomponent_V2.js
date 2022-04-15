@@ -1,24 +1,16 @@
  (function()  {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = ``;
+    tmpl.innerHTML = `<h1 id="headline">Upload</h1>`;
 
     customElements.define('com-sap-sample-excelupload', class ExcelUpload extends HTMLElement {
 
 
 		constructor() {
 			super(); 
+			super(); 
 			this._shadowRoot = this.attachShadow({mode: "open"});
             this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
             this._firstConnection = false;
-            this._tagContainer;
-            this._tagType = "h1";
-            this._tagText = "Excel Upload";
-
-            //Adding event handler for click events
-			this.addEventListener("click", event => {
-				var event = new Event("onClick");
-				this.dispatchEvent(event);
-            });
 		}
 
         //Fired when the widget is added to the html DOM of the page
@@ -40,6 +32,7 @@
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
 		onCustomWidgetAfterUpdate(oChangedProperties) {
             if (this._firstConnection){
+				document.getElementById('headline').innerHTML = changedProperties["value"];
                 this.redraw();
             }
         }
@@ -79,15 +72,6 @@
         // End - Getters and Setters
 
         redraw(){
-            if (this._tagContainer){
-                this._tagContainer.parentNode.removeChild(this._tagContainer);
-            }
-
-            var shadow = window.getSelection(this._shadowRoot);
-            this._tagContainer = document.createElement(this._tagType);
-            var theText = document.createTextNode(this._tagText);    
-            this._tagContainer.appendChild(theText); 
-            this._shadowRoot.appendChild(this._tagContainer);
 
         }
     
