@@ -60,7 +60,7 @@
 					let  sheetNames = workbook.SheetNames; // Sheet name collection
 					let  worksheet = workbook.Sheets[sheetNames[0]]; // Here we only read the first sheet 
 					let  json = XLSX.utils.sheet_to_json(worksheet); //  Read the workbook, you can write your own methods to output the table. Here it is recommended to use XLSX.utils. Tool class to output the data. Here you can output the data in json format and other format codes		
-
+				}
 				console.log(sheetNames);
 				alert("I am an alert box!");
                 this.redraw();
