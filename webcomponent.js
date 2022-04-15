@@ -6,6 +6,7 @@
 		<h2>Headline</h2>
 		<br>
         <div id="headline"><b>Hello World</b></div>
+		<br><br>
 		</body>
 	</html>
     `;
