@@ -40,7 +40,15 @@
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
 		onCustomWidgetAfterUpdate(oChangedProperties) {
             if (this._firstConnection){
-				document.getElementById("headline").innerHTML = "New text!";
+				var workbook = new Excel.Workbook(); 
+//				workbook.xlsx.readFile(filename)
+//					.then(function() {
+//						var worksheet = workbook.getWorksheet(sheet);
+//						worksheet.eachRow({ includeEmpty: true }, function(row, rowNumber) {
+//						  console.log("Row " + rowNumber + " = " + JSON.stringify(row.values));
+//						});
+				});
+				console.log("Row ");
 				alert("I am an alert box!");
                 this.redraw();
             }
