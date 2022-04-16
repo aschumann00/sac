@@ -8,6 +8,11 @@
 		<br>
         <div id="headline"><b>Hello World</b></div>
 		<br><br>
+		<input type="file" id="fileUpload" />
+		<input type="button" id="upload" value="Upload" onclick="UploadProcess()" />
+		<br/>
+
+		<div id="ExcelTable"></div>		
 		</body>
 	</html>
     `;
