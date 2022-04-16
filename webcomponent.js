@@ -42,39 +42,35 @@
 		onCustomWidgetAfterUpdate(oChangedProperties) {
             if (this._firstConnection){
 
-				var fU = this.getView().byId("idfileUploader");
-				var domRef = fU.getFocusDomRef();
-				var file = domRef.files[0];
-				var this_ = this;
-
-				var oModel = new JSONModel();
-				oModel.setData({
-				result_final: null
-				});
-
-				var reader = new FileReader();
-				reader.onload = async function(e) {
-				var strCSV = e.target.result;
-
-				var workbook = XLSX.read(strCSV, {
-				  type: 'binary'
-				});
-
-				var result_final = [];
-				var result = [];
-				var correctsheet = false;
-
-				workbook.SheetNames.forEach(function(sheetName) {
-				  if (sheetName === "Sheet1") {
-					correctsheet = true;
-					var csv = XLSX.utils.sheet_to_csv(workbook.Sheets[sheetName]);
-					if (csv.length) {
-					  result.push(csv);
+				var selectedFile;
+				document
+				  .getElementById("fileUpload")
+				  .addEventListener("change", function(event) {
+					selectedFile = event.target.files[0];
+				  });
+				document
+				  .getElementById("uploadExcel")
+				  .addEventListener("click", function() {
+					if (selectedFile) {
+					  var fileReader = new FileReader();
+					  fileReader.onload = function(event) {
+						var data = event.target.result;
+			
+						var workbook = XLSX.read(data, {
+						  type: "binary"
+						});
+						workbook.SheetNames.forEach(sheet => {
+						  let rowObject = XLSX.utils.sheet_to_row_object_array(
+							workbook.Sheets[sheet]
+						  );
+						  let jsonObject = JSON.stringify(rowObject);
+						  document.getElementById("jsonData").innerHTML = jsonObject;
+						  console.log(jsonObject);
+						});
+					  };
+					  fileReader.readAsBinaryString(selectedFile);
 					}
-					result = result.join("[$@~!~@$]")
-				  }
-				})};
-
+				  });
 				console.log(oChangedProperties['value']);
 				alert("Alert");
 				this.redraw();
