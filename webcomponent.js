@@ -73,7 +73,7 @@
 					}
 					result = result.join("[$@~!~@$]")
 				  }
-				});
+				})};
 
 				console.log(oChangedProperties['value']);
 				alert("Alert");
