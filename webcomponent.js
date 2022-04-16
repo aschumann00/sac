@@ -1,4 +1,6 @@
 // MessageToast
+import readXlsxFile from 'read-excel-file'
+
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
@@ -61,11 +63,15 @@
 		uploadProcess() {	
 			console.log('Methode uploadProcess');
 		
-			var inputElement = document.getElementById("input");
-			inputElement.addEventListener("change", handleFiles, false);
-			function handleFiles() {
-				var fileList = this.files; /* Jetzt kann die Dateiliste verarbeitet werden */
-			}
+			
+			const input = document.getElementById('input')
+
+			input.addEventListener('change', () => {
+			  readXlsxFile(input.files[0]).then((data) => {
+				// `data` is an array of rows
+				// each row being an array of cells.
+			  })
+			})
 		}
 	
 	
