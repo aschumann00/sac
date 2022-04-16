@@ -45,7 +45,7 @@
 				this.uploadProcess();
 				
 				
-				console.log(oChangedProperties['value']);
+				//console.log(oChangedProperties['value']);
 				alert("Alert");
 				//this.redraw();
             }
