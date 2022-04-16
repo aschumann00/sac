@@ -68,7 +68,7 @@
 						};
 					}); */
 
-
+                MessageToast.show("Maximum records are 2000.");
 				console.log(oChangedProperties['value']);
 				alert("Alert");
                 this.redraw();
