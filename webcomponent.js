@@ -40,13 +40,14 @@
 
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
 		onCustomWidgetAfterUpdate(oChangedProperties) {
+		    console.log('Methode onCustomWidgetAfterUpdate');
             if (this._firstConnection){
 
 				this.uploadProcess();
 				
 				
 				//console.log(oChangedProperties['value']);
-				alert("Alert");
+				//alert("Alert");
 				//this.redraw();
             }
         }
@@ -57,12 +58,14 @@
         }
 
 
-		uploadProcess() {		
+		uploadProcess() {	
+			console.log('Methode uploadProcess');
+		
 			var inputElement = document.getElementById("input");
-inputElement.addEventListener("change", handleFiles, false);
-function handleFiles() {
-  var fileList = this.files; /* Jetzt kann die Dateiliste verarbeitet werden */
-}
+			inputElement.addEventListener("change", handleFiles, false);
+			function handleFiles() {
+				var fileList = this.files; /* Jetzt kann die Dateiliste verarbeitet werden */
+			}
 		}
 	
 	
