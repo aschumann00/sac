@@ -42,21 +42,7 @@
 		onCustomWidgetAfterUpdate(oChangedProperties) {
             if (this._firstConnection){
 
-				
-			  var that = this;
-
-			  let xlsxjs = "https://aschumann00.github.io/sac/xlsx.js";
-			  async function LoadLibs() {
-				try {
-				  await loadScript(xlsxjs, _shadowRoot);
-				} catch (e) {
-				  console.log(e);
-				} finally {
-				  loadthis(that, changedProperties);
-				}
-			  }
-			  LoadLibs();
-				
+				this.uploadProcess();
 				
 				
 				console.log(oChangedProperties['value']);
@@ -65,10 +51,48 @@
             }
         }
         
+		
         //When the custom widget is removed from the canvas or the analytic application is closed
         onCustomWidgetDestroy(){
         }
 
+
+		uploadProcess() {		
+		var fileUpload = document.getElementById("fileUpload");
+ 
+        //Validate whether File is valid Excel file.
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
+        if (regex.test(fileUpload.value.toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+ 
+                //For Browsers other than IE.
+                if (reader.readAsBinaryString) {
+                    reader.onload = function (e) {
+                        GetTableFromExcel(e.target.result);
+                    };
+                    reader.readAsBinaryString(fileUpload.files[0]);
+                } else {
+                    //For IE Browser.
+                    reader.onload = function (e) {
+                        var data = "";
+                        var bytes = new Uint8Array(e.target.result);
+                        for (var i = 0; i < bytes.byteLength; i++) {
+                            data += String.fromCharCode(bytes[i]);
+                        }
+                        GetTableFromExcel(data);
+                    };
+                    reader.readAsArrayBuffer(fileUpload.files[0]);
+                }
+            } else {
+                alert("This browser does not support HTML5.");
+            }
+        } else {
+            alert("Please upload a valid Excel file.");
+        }
+		};
+	
+	
         
         //When the custom widget is resized on the canvas, the Custom Widget SDK framework executes the following JavaScript function call on the custom widget
         // Commented out by default.  If it is enabled, SAP Analytics Cloud will track DOM size changes and call this callback as needed
