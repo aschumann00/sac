@@ -61,7 +61,7 @@
 				
 				console.log(oChangedProperties['value']);
 				alert("Alert");
-				this.redraw();
+				//this.redraw();
             }
         }
         
