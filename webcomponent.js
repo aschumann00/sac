@@ -1,5 +1,4 @@
 // MessageToast
-import readXlsxFile from 'read-excel-file'
 
 (function()  {
     let tmpl = document.createElement('template');
@@ -63,7 +62,7 @@ import readXlsxFile from 'read-excel-file'
 		uploadProcess() {	
 			console.log('Methode uploadProcess');
 		
-			
+			import readXlsxFile from 'read-excel-file'
 			const input = document.getElementById('input')
 
 			input.addEventListener('change', () => {
